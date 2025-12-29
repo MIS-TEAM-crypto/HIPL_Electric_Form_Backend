@@ -1,10 +1,10 @@
 // controllers/maintainance.controller.js
 import { fetchAllLogs, findLogByDateAndShift, getPreviousDate } from '../middleware/validation.middleware.js';
 import { google } from 'googleapis';
-import { SPREADSHEET_ID, SHEET_NAME, GOOGLE_APPLICATION_CREDENTIALS } from '../config.js';
+import { SPREADSHEET_ID, SHEET_NAME, GOOGLE_CREDENTIALS } from '../config.js';
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: GOOGLE_APPLICATION_CREDENTIALS,
+  credentials: GOOGLE_CREDENTIALS,
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 

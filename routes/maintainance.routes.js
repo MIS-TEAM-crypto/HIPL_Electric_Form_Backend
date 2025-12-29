@@ -3,14 +3,16 @@ import express from 'express';
 const router = express.Router();
 import { google } from 'googleapis';
 import { validateMaintenanceLog } from "../middleware/validation.middleware.js";
+import { SPREADSHEET_ID, SHEET_NAME, GOOGLE_CREDENTIALS, SHEET_NAME, SPREADSHEET_ID } from '../config.js';
+
 
 // Google Sheets Configuration
-const SPREADSHEET_ID = process.env.GOOGLE_SPREADSHEET_ID; // Add this to your .env file
-const SHEET_NAME = 'Sheet1'; // Change this to your sheet name
+const SPREADSHEET_ID = SPREADSHEET_ID; 
+const SHEET_NAME = SHEET_NAME; 
 
 // Initialize Google Sheets API
 const auth = new google.auth.GoogleAuth({
-  keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS, // Path to your service account key JSON
+  credentials: GOOGLE_CREDENTIALS,
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
