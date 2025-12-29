@@ -19,9 +19,10 @@ async function initSheets() {
 async function getSheetsInstance() {
   if (sheets) return sheets;
 
-  if (!process.env.GOOGLE_CREDENTIALS) {
-    throw new Error('GOOGLE_CREDENTIALS is not set');
-  }
+if (!GOOGLE_CREDENTIALS) {
+  throw new Error('GOOGLE_CREDENTIALS_JSON is not set or invalid');
+}
+
 
   const auth = new google.auth.GoogleAuth({
     credentials: GOOGLE_CREDENTIALS,
