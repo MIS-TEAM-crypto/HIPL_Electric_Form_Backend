@@ -3,12 +3,10 @@ import express from 'express';
 const router = express.Router();
 import { google } from 'googleapis';
 import { validateMaintenanceLog } from "../middleware/validation.middleware.js";
-import { SPREADSHEET_ID, SHEET_NAME, GOOGLE_CREDENTIALS, SHEET_NAME, SPREADSHEET_ID } from '../config.js';
+import { SPREADSHEET_ID, SHEET_NAME, GOOGLE_CREDENTIALS } from '../config.js';
 
 
-// Google Sheets Configuration
-const SPREADSHEET_ID = SPREADSHEET_ID; 
-const SHEET_NAME = SHEET_NAME; 
+
 
 // Initialize Google Sheets API
 const auth = new google.auth.GoogleAuth({
