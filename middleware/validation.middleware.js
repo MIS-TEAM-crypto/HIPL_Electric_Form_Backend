@@ -1,10 +1,10 @@
 // middleware/validation.middleware.js
 import { google } from 'googleapis';
-import { SPREADSHEET_ID, SHEET_NAME, GOOGLE_APPLICATION_CREDENTIALS } from '../config.js';
+import { SPREADSHEET_ID, SHEET_NAME, GOOGLE_CREDENTIALS } from '../config.js';
 
 // Initialize Google Sheets API
 const auth = new google.auth.GoogleAuth({
-  keyFile: GOOGLE_APPLICATION_CREDENTIALS,
+  credentials: GOOGLE_CREDENTIALS,
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
@@ -19,12 +19,12 @@ async function initSheets() {
 async function getSheetsInstance() {
   if (sheets) return sheets;
 
-  if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-    throw new Error('GOOGLE_APPLICATION_CREDENTIALS is not set');
+  if (!process.env.GOOGLE_CREDENTIALS) {
+    throw new Error('GOOGLE_CREDENTIALS is not set');
   }
 
   const auth = new google.auth.GoogleAuth({
-    keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+    credentials: GOOGLE_CREDENTIALS,
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
 
