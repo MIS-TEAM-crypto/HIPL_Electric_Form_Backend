@@ -122,7 +122,10 @@ const fetchAllLogs = async () => {
         prep_compressor: row[9] || '',
         pump: row[10] || '',
         prep: row[11] || '',
-        wbsedcl_unit: row[12] || ''
+        wbsedcl_unit: row[12] || '',
+        Pulverizer_Mega: row[13] || '',
+        Pulverizer_Oils: row[14] || '',
+        Boiler_12_Ton: row[15] || ''
       }
     }));
   } catch (error) {

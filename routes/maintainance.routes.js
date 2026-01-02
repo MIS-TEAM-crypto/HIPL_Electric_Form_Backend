@@ -43,7 +43,11 @@ router.post('/', validateMaintenanceLog, async (req, res) => {
       equipment_status.prep_compressor || '',
       equipment_status.pump || '',
       equipment_status.prep || '',
-      equipment_status.wbsedcl_unit || ''
+      equipment_status.wbsedcl_unit || '',
+      equipment_status.Pulverizer_Mega || '',
+      equipment_status.Pulverizer_Oils || '',
+      equipment_status.Boiler_12_Ton || '',
+
     ];
 
     // Check for duplicates (optional - check if date+shift already exists)
@@ -155,7 +159,11 @@ router.get('/', async (req, res) => {
         prep_compressor: row[8] || '',
         pump: row[9] || '',
         prep: row[10] || '',
-        wbsedcl_unit: row[11] || ''
+        wbsedcl_unit: row[11] || '',
+        Pulverizer_Mega: row[13] || '',
+        Pulverizer_Oils: row[14] || '',
+        Boiler_12_Ton: row[15] || ''
+
       }
     }));
 

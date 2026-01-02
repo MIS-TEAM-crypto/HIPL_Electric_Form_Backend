@@ -40,7 +40,10 @@ export const appendMaintenanceLog = async (req, res) => {
       equipment_status?.prep_compressor || '',
       equipment_status?.pump || '',
       equipment_status?.prep || '',
-      equipment_status?.wbsedcl_unit || ''
+      equipment_status?.wbsedcl_unit || '',
+      equipment_status?.Pulverizer_Mega || '',
+      equipment_status?.Pulverizer_Oils || '',
+      equipment_status?.Boiler_12_Ton_ || '',
     ];
 
     // Append row to Google Sheets
