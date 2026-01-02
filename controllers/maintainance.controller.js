@@ -1,5 +1,6 @@
 // controllers/maintainance.controller.js
 import { fetchAllLogs, findLogByDateAndShift, getPreviousDate } from '../middleware/validation.middleware.js';
+import dayjs from 'dayjs';
 import { google } from 'googleapis';
 import { SPREADSHEET_ID, SHEET_NAME, GOOGLE_CREDENTIALS } from '../config.js';
 
@@ -23,12 +24,16 @@ async function getSheetsInstance() {
 // Append a new maintenance log to Google Sheets
 export const appendMaintenanceLog = async (req, res) => {
   try {
+
     const { date, electrician1, electrician2, shift, equipment_status, timestamp } = req.body;
     const sheets = await getSheetsInstance();
 
+    // Format the timestamp as 'DD/MM/YYYY HH:mm:ss'
+    const formattedTimestamp = dayjs(timestamp || new Date()).format('DD/MM/YYYY HH:mm:ss');
+
     // Prepare row data
     const row = [
-      timestamp || new Date().toISOString(),
+      formattedTimestamp,
       [electrician1, electrician2].filter(Boolean).join(', '),
       shift || '',
       equipment_status?.boiler || '',
